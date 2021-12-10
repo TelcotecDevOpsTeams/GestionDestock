@@ -10,19 +10,17 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "Lignecommandeclient")
 public class LigneCommandeClient extends AbstractEntity{
-    @Id
-    @GeneratedValue
-    @Column
-    private String IDLigneCommandeClient;
 
+    @Column(name = "codeLigComCli")
+    private String codeLigComCli;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "IDCommandeClient")
-//    private CommandeClient commandeClient;
-//
-//    @ManyToOne()
-//    @JoinColumn(name = "IDArticle")
-//    private Article article;
+    @ManyToOne()
+    @JoinColumn(name = "IDCommandeClient",nullable = false)
+    private CommandeClient commandeClient;
+
+    @ManyToOne()
+    @JoinColumn(name = "IDArticle",nullable = false)
+    private Article article;
 }

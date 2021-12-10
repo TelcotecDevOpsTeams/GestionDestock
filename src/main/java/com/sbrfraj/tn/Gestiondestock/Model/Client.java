@@ -1,7 +1,6 @@
 package com.sbrfraj.tn.Gestiondestock.Model;
 
 import lombok.AllArgsConstructor;
-import lombok.CustomLog;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,14 +18,15 @@ public class Client extends AbstractEntity{
     private String nom;
     @Column
     private String prenom;
-    // private Adress adress;
+    @Embedded
+    private Adresse adresse;
     @Column
     private String photo;
     @Column
     private String email;
     @Column
     private String Tel;
-//
-//    @OneToMany(mappedBy = "Client")
-//    private Set<CommandeClient> commandeClients;
+
+    @OneToMany(mappedBy = "client")
+    private Set<CommandeClient> commandeClients;
 }

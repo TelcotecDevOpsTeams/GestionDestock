@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Vente extends AbstractEntity{
-    @Id
-    private String idv;
+
+    @OneToMany(mappedBy = "vente")
+    private Set<LigneVente> ligneVentes;
 }

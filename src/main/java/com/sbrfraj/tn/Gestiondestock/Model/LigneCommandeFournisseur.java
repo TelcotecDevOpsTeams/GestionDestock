@@ -4,16 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "lignecommandefournisseur")
 public class LigneCommandeFournisseur extends AbstractEntity{
-    @Id
-    private String idlcf;
+
+    @Column(name = "codeLigneCommandeFournisseur")
+    private String codeLigComFou;
+
+
+    @ManyToOne()
+    @JoinColumn(name = "IDCommandeFournisseur",nullable = false)
+    private CommandeFournisseur commandeFournisseur ;
+
+    @ManyToOne()
+    @JoinColumn(name = "IDArticle",nullable = false)
+    private Article article;
+
 }

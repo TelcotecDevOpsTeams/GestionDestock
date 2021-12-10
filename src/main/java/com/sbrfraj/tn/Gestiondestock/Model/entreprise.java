@@ -5,17 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class entreprise extends AbstractEntity {
-    @Id
-    @GeneratedValue
+public class Entreprise extends AbstractEntity {
+
     @Column
-    private String IDEntreprise;
+    private String codeEntreprise;
 
+    @OneToMany(mappedBy = "entreprise")
+    private Set<Utilisateur> utilisateurs;
 
-
+    @OneToMany(mappedBy = "entreprise")
+    private Set<Article> articles;
 }

@@ -4,16 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "utilistaeur")
 public class Utilisateur extends AbstractEntity {
 
-    @Id
-    private String Idr;
+
+    @Column(name=" nom")
+    private String nom;
+
+    @ManyToOne()
+    @JoinColumn(name = "IDEntreprise",nullable = false)
+    private Entreprise entreprise;
+
 }

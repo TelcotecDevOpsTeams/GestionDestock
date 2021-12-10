@@ -29,12 +29,23 @@ public class Article extends AbstractEntity{
     @Column
     private String photo;
 
-   @ManyToOne
-
-            @JoinColumn(name ="IDCategorie",nullable = false)
-
+    @ManyToOne
+    @JoinColumn(name ="IDCategorie",nullable = false)
     private Categorie categorie;
 
-//    @OneToMany(mappedBy = "Article")
-//    private Set<LigneCommandeClient> ligneCommandeClients;
+    @OneToMany(mappedBy = "article")
+    private Set<LigneCommandeClient> ligneCommandeClients;
+
+    @OneToMany(mappedBy = "article")
+    private Set<MvtStk> mvtStks ;
+
+    @OneToMany(mappedBy = "article")
+    private Set<LigneVente> ligneVentes;
+
+    @OneToMany(mappedBy = "article")
+    private Set<LigneCommandeFournisseur> ligneCommandeFournisseurs;
+
+    @ManyToOne()
+    @JoinColumn(name = "IDEntreprise",nullable = false)
+    private Entreprise entreprise;
 }
